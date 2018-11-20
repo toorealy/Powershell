@@ -5,12 +5,7 @@
     
     $a=$fileToCopy.FileName
 
-    Copy-Item  @params{
-        Path = $a 
-        ToSession = $session 
-        Destination = 'C:\windows\temp\'$fileToCopy.SafeFileName
-        }
-        
+    Copy-Item -Path $a -ToSession $session -Destination = 'C:\windows\temp\'$fileToCopy.SafeFileName        
 }
 
 
@@ -22,5 +17,8 @@ function Open-CopySession {
 
 
 }
-Open-CopySession
-Copy-TargetFile
+
+
+if (Open-CopySession){
+    Copy-TargetFile
+    }
